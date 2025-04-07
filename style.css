@@ -34,8 +34,6 @@ body::before {
     background-repeat: no-repeat;
 
     filter: brightness(0.8);
-
-    background-attachment: fixed;
 }
 
 .container {
