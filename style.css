@@ -8,18 +8,23 @@ html, body {
 
 /* --- BACKGROUND IMAGE --- */
 html {
-    background-image: url('cover.jpg');
+    /* --- Multiple Background Layers --- */
+    background-image:
+        /* Layer 1: Semi-transparent overlay for brightness effect */
+        /* Alpha (0.2 = 80% brightness) */
+        linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
 
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+        /* Layer 2: Background image */
+        url('cover.jpg');
+
+    /* --- Properties applied to *all* layers unless specified otherwise --- */
+    background-size: cover, cover;
+    background-position: center center, center center;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed, fixed;
 
     /* Fallback to background color */
     background-color: #10101d;
-
-    /* Brightness filter */
-    filter: brightness(0.8);
 }
 
 
@@ -34,6 +39,7 @@ body {
     line-height: 1.6;
     font-size: 18px;
     overflow-x: hidden;
+    background: transparent;
 }
 
 .container {
@@ -47,8 +53,6 @@ body {
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6);
     margin-top: 20px;
     margin-bottom: 30px;
-    position: relative;
-    z-index: 1;
 }
 
 /* --- Header --- */
