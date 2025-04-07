@@ -16,7 +16,7 @@ body {
     font-size: 18px;
 }
 
-/* --- FIXED BACKGROUND PSEUDO-ELEMENT --- */
+/* --- FIXED BACKGROUND --- */
 body::before {
     content: "";
     position: fixed;
@@ -52,6 +52,7 @@ body::before {
     padding: 0 20px 30px 20px; /* Top padding (0) -> container margin */
     -webkit-overflow-scrolling: touch;
     background: transparent;
+	overscroll-behavior-y: contain;
 }
 
 /* --- Content Container --- */
