@@ -1,47 +1,49 @@
 /* --- Core Styles & NITW Theme --- */
-html, body {
-    min-height: 100%;
+html {
+    height: 100%;
+    overflow: hidden; /* Prevent html from scrolling */
+}
+
+body {
     height: 100%;
     margin: 0;
     padding: 0;
-}
+    overflow: hidden; /* Prevent body from scrolling */
 
-/* --- BACKGROUND IMAGE --- */
-html {
-    /* --- Multiple Background Layers --- */
+    color: #e0e0e0;
+    font-family: 'Patrick Hand SC', cursive;
+    line-height: 1.6;
+    font-size: 18px;
+
+    /* --- APPLY BACKGROUND TO BODY --- */
     background-image:
-        /* Layer 1: Semi-transparent overlay for brightness effect */
-        /* Alpha (0.2 = 80% brightness) */
+        /* Layer 1: Semi-transparent overlay */
         linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-
         /* Layer 2: Background image */
         url('cover.jpg');
 
-    /* --- Properties applied to *all* layers unless specified otherwise --- */
     background-size: cover, cover;
     background-position: center center, center center;
     background-repeat: no-repeat, no-repeat;
+    /* Attachment fixed on the non-scrolling body */
     background-attachment: fixed, fixed;
-
-    /* Fallback to background color */
-    background-color: #10101d;
+    background-color: #10101d; /* Fallback */
 }
 
-
-body {
-    color: #e0e0e0;
-    font-family: 'Patrick Hand SC', cursive;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 30px 20px;
-    box-sizing: border-box;
-    line-height: 1.6;
-    font-size: 18px;
+/* --- SCROLLING CONTAINER --- */
+.scroll-wrapper {
+    height: 100%;
+    /* Only vertical scrolling WITHIN this div */
+    overflow-y: auto;
     overflow-x: hidden;
-    background: transparent;
+    box-sizing: border-box;
+	padding: 20px 20px 30px 20px;
+
+    /* For momentum scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
 }
 
+/* --- Content Container --- */
 .container {
     background-color: rgba(26, 26, 46, 0.88);
     border: 3px solid #ff9900;
@@ -51,8 +53,38 @@ body {
     width: 100%;
     text-align: center;
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6);
-    margin-top: 20px;
-    margin-bottom: 30px;
+	margin-top: 45px;
+    margin-left: auto;
+    margin-right: auto;
+	margin-bottom: 30px;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 600px) {
+    .scroll-wrapper {
+        padding: 20px 15px;
+    }
+    body {
+        font-size: 17px;
+    }
+    .container {
+        padding: 20px 25px;
+    }
+    h1 { font-size: 2.7em; }
+    main > h1 { font-size: 2.4em; }
+    .time-value { font-size: 2.2em; }
+    .time-block { min-width: 75px; padding: 10px 15px; }
+    .progress-bar-outer { height: 25px; }
+}
+
+@media (max-width: 450px) {
+     h1 { font-size: 2.4em; }
+     main > h1 { font-size: 2.1em; }
+     #countdown-timer { gap: 10px; }
+     .time-block { flex-basis: 40%; min-width: 0; margin-bottom: 10px; padding: 8px 10px; }
+     .time-value { font-size: 2em; }
+     .time-label { font-size: 0.8em; letter-spacing: 1px; }
+     #countdown-message p { font-size: 1.4em; }
 }
 
 /* --- Header --- */
