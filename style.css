@@ -203,29 +203,25 @@ footer {
 	box-sizing: border-box;
 }
 
-     /* =================================== */
-/* --- Mobile Optimizations --- */
-/* =================================== */
-@media (max-width: 600px) {
+@media (max-width: 750px) {
 
     html {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     :root {
-        --padding: 1.0rem;           /* Drastically reduced major spacing */
-        --title-padding: 0.15rem;    /* Reduced space below H1s */
-        --subtitle-padding: 0.25rem; /* Reduced space below H3s */
-        --bar-padding: 0.2rem;       /* Reduced space around progress text */
+        --padding: 1.0rem;           /* Major spacing */
+        --title-padding: 0.15rem;    /* Space below H1s */
+        --subtitle-padding: 0.25rem; /* Space below H3s */
+        --bar-padding: 0.2rem;       /* Space around progress text */
     }
 
     /* --- Tighter Main Container --- */
     .container {
         width: auto;
-        max-width: 92%;              /* Slightly more width */
+        max-width: 95%;              /* Slightly more width */
         padding: 0.75rem;            /* Reduced container padding */
         margin: 0.75rem auto 0 auto; /* Significantly reduced top margin */
-        flex-grow: 1;
     }
 
     /* --- Further Reduced Text Sizes & Line Height --- */
