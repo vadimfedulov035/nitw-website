@@ -219,9 +219,8 @@ footer {
         --bar-padding: 0.4rem;      /* Restore reasonable space around progress text */
     }
 
-    /* --- Restore FLEX LAYOUT FOR BODY ON MOBILE --- */
     body {
-        display: flex;            /* Re-enable flex */
+        display: block;
         flex-direction: column;   /* Ensure vertical stacking */
         min-height: 100vh;        /* Ensure body tries to fill viewport height */
     }
