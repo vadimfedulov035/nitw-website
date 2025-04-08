@@ -1,323 +1,204 @@
+/* Basic Reset & Body Setup */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html {
-    height: 100%;
-    overflow: hidden; /* Prevent HTML scroll on desktop */
+	/* Base font size (for rem) */
+	font-size: 20px;
 }
 
 body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* Prevent Body scroll on desktop */
-    position: relative; /* Needed for ::before */
-    color: #e0e0e0;
     font-family: 'Patrick Hand SC', cursive;
-    line-height: 1.6;
-    font-size: 18px;
+    line-height: 1.5;
+    color: #e0e0e0;
+    background-color: #1a1a1a;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+	display: flex;
+	flex-direction: column;
 }
 
-/* --- FIXED BACKGROUND (Desktop Default) --- */
+/* Top Background Image */
 body::before {
     content: "";
-    position: fixed; /* Fixed on desktop */
-    z-index: -1;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-        url('cover.jpg');
-    background-size: cover, cover;
-    background-position: center center, center center;
-    background-repeat: no-repeat, no-repeat;
-    background-color: #10101d;
-    transform: translateZ(0);
+    background-image: url('top.jpg');
+    background-size: cover;
+    background-position: center -51.5vh;
+    background-attachment: fixed;
+	background-repeat: no-repeat;
+    opacity: 0.8;
+    z-index: -1;
+	pointer-events: none;
 }
 
-/* --- SCROLLING CONTAINER (Desktop Default) --- */
-.scroll-wrapper {
-    height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    box-sizing: border-box;
-    padding: 0 20px 30px 20px;
-    -webkit-overflow-scrolling: touch;
-    background: transparent;
-    overscroll-behavior-y: contain;
-}
-
-/* --- Content Container --- */
-.container {
-    background-color: rgba(26, 26, 46, 0.88);
-    border: 3px solid #ff9900;
-    border-radius: 10px;
-    padding: 10px 25px;
-    max-width: 700px;
+/* Top Background Image */
+body::after {
+    content: "";
+    position: fixed;
+    top: 35%;
+    left: 0;
     width: 100%;
-    text-align: center;
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6);
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 30px;
+    height: 100%;
+    background-image: url('bottom.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+	background-repeat: no-repeat;
+    opacity: 0.8;
+    z-index: -1;
+	pointer-events: none;
 }
 
-/* --- MOBILE (screens <= 768px wide) --- */
-@media (max-width: 768px) {
-
-    html, body {
-        /* Allow normal scrolling on mobile */
-        height: auto;
-        overflow: visible;
-    }
-
-    body::before {
-        /* Disable fixed pseudo-element background */
-        display: none;
-    }
-
-    .scroll-wrapper {
-        /* Let wrapper height be auto, disable specific scroll */
-        height: auto;
-        overflow: visible;
-        padding: 0 15px 20px 15px; /* Adjust padding */
-        overscroll-behavior-y: auto; /* Reset overscroll behavior */
-        /* Apply the background HERE for scrolling */
-        background-image:
-            linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-            url('cover.jpg');
-        background-size: cover; /* Cover might need adjusting for scroll */
-        background-position: center top; /* Often better for scrolling */
-        background-repeat: no-repeat;
-        background-attachment: scroll; /* Explicitly scroll */
-        background-color: #10101d;
-    }
-
-    .container {
-        margin-top: 30px;
-        margin-bottom: 20px;
-         padding: 20px 25px;
-    }
-
-    body {
-        font-size: 17px;
-    }
-
-     /* Additional mobile specific adjustments from your previous code */
-     @media (max-width: 450px) {
-         .container {
-             margin-top: 20px;
-             margin-bottom: 15px;
-         }
-     }
+/* Main Content Container */
+.container {
+    max-width: 55%;
+    width: 50rem;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0.5rem;
+    position: relative;
+    z-index: 1;
+	text-align: center;
+	flex-grow: 1;
 }
 
-/* --- Header --- */
-header {
-    margin-bottom: 30px;
-    border-bottom: 2px dashed #ffcc66;
-    padding-bottom: 20px;
+:root {
+    --padding: 2.25rem;
+    --title-padding: 0.25rem; /* Space below H1s before release dates */
+	--subtitle-padding: 0.25rem; /* Space below H3s before timer/bar */
+	--bar-padding: 0.25rem; /* Space below bar before % */
 }
 
-h1 {
-    color: #ff9900;
-    font-size: 3.2em;
-    margin-bottom: 5px;
-    letter-spacing: 1px;
-    text-shadow:
-        2px 2px 0px #4d2e00,
-        3px 3px 5px rgba(0,0,0,0.7);
+/* Night in the Woods (1st title) */
+header h1 {
+    font-size: 2.5rem;
+    color: #ffa500;
 }
 
-.release-date {
-    color: #ffcc66;
-    font-size: 1.1em;
-    margin-top: 5px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+/* Nokto en la Arbaro (2nd title) */
+main h1 {
+	font-size: 2.5rem;
+	margin-top: var(--padding);
 }
 
-/* --- Main Content --- */
-main {
-    margin-bottom: 30px;
+/* Release dates */
+header h1 + p.release-date,
+main h1 + p.release-date {
+	margin-top: var(--title-padding);
+	margin-bottom: 0;
+    font-size: 1rem;
+    color: #b0b0b0;
 }
 
-main > h1 {
-    color: #ffaa33;
-     font-size: 2.8em;
-     margin-bottom: 5px;
-     text-shadow:
-        2px 2px 0px #4d3300,
-        3px 3px 5px rgba(0,0,0,0.7);
-}
-
-main .target-date {
-    font-weight: bold;
-    color: #ffd788;
-}
-
-h3 {
-    color: #ffcc66;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    font-size: 1.6em;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-}
-
-/* --- Countdown Timer --- */
+/* Timer */
 .countdown-container {
-    margin-top: 15px;
+	margin-top: var(--padding);
+	margin-bottom: 0;
+}
+
+/* Timer header */
+.countdown-container h3 {
+    font-size: 1.5rem;
+    color: #ffa500;
+	margin-top: 0;
+    margin-bottom: var(--subtitle-padding);
 }
 
 #countdown-timer {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 15px;
 }
 
 .time-block {
-    background-color: rgba(10, 10, 20, 0.5);
-    padding: 12px 20px;
-    border-radius: 6px;
-    min-width: 85px;
-    border: 1px solid #40405a;
-    box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+    text-align: center;
+    padding: 0.5rem 1rem;
+    min-width: 5rem;
 }
 
 .time-value {
     display: block;
-    font-size: 2.6em;
-    color: #ffffff;
+    font-size: 2.8rem;
     font-weight: bold;
-    line-height: 1.1;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    line-height: 1.2;
+    color: #ffffff;
 }
 
 .time-label {
     display: block;
-    font-size: 0.9em;
-    color: #ffcc66;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-top: 3px;
+    color: #b0b0b0;
 }
 
-#countdown-message p {
-    font-size: 1.6em;
-    color: #aeeea0;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+#countdown-message {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffcc66;
 }
 
-
-/* --- Progress Bar --- */
+/* Progress Bar */
 .progress-container {
-    margin-top: 15px; /* More space */
+    margin-top: var(--padding);
+	margin-bottom: var(--padding);
+}
+
+/* Progress header */
+.progress-container h3 {
+    font-size: 1.5rem;
+    color: #ffa500;
+	margin-top: 0;
+    margin-bottom: var(--subtitle-padding);
 }
 
 .progress-bar-outer {
-    background-color: #30304a;
-    border-radius: 12px;
-    padding: 5px;
-    border: 1px solid #222;
-    height: 28px;
+    background-color: #444;
+    border-radius: 0.5rem;
+    height: 1.5rem;
+    width: 100%;
     overflow: hidden;
-    margin-bottom: 8px;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
 }
 
+/* Vibrant progress bar style */
 .progress-bar-inner {
-    background: linear-gradient(to right, #ff9900, #ffbf40);
+    background-color: #ffa500;
     height: 100%;
-    border-radius: 8px;
-    transition: width 0.6s ease-out;
-    box-shadow: 0 1px 2px rgba(255, 255, 255, 0.2) inset, 0 0 10px rgba(255, 153, 0, 0.5);
+    border-radius: 0.5rem 0 0 0.5rem;
+    transition: width 0.5s ease-in-out, box-shadow 0.3s ease;
+	box-shadow: 0 0 8px 2px rgba(225, 153, 0, 0.8);
+}
+.progress-bar-inner[style*="100%"] {
+     border-radius: 0.5rem;
 }
 
+/* Text with bar inner padding */
 .progress-text {
-    font-size: 1.15em;
-    color: #ffcc66;
-    margin-top: 8px;
+    font-size: 1rem;
     font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+	text-align: center;
+    margin-top: var(--bar-padding);
+    margin-bottom: var(--bar-padding);
 }
 
-/* --- Footer --- */
+/* Footer Styles */
 footer {
-    margin-top: 40px;
-    border-top: 2px dashed #ffcc66;
-    padding-top: 15px;
-    font-size: 0.95em;
-    color: #b0b0c0;
-}
-
-footer p {
-    margin: 8px 0;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-/* Quote style */
-footer p:first-of-type {
-    font-style: italic;
-    color: #cacaca;
-}
-footer p:nth-of-type(2) {
-    font-style: italic;
-    color: #cacaca;
-}
-
-
-/* --- Responsive Adjustments --- */
-@media (max-width: 600px) {
-    body {
-        font-size: 17px;
-        padding: 20px 15px;
-    }
-    .container {
-        padding: 20px 25px;
-        margin-top: 15px;
-    }
-    h1 {
-        font-size: 2.7em;
-    }
-    main > h1 {
-        font-size: 2.4em;
-    }
-    .time-value {
-        font-size: 2.2em;
-    }
-    .time-block {
-        min-width: 75px;
-        padding: 10px 15px;
-    }
-    .progress-bar-outer {
-        height: 25px;
-    }
-}
-
-@media (max-width: 450px) {
-     h1 {
-        font-size: 2.4em;
-    }
-     main > h1 {
-        font-size: 2.1em;
-    }
-    #countdown-timer {
-        gap: 10px;
-    }
-    .time-block {
-        flex-basis: 40%;
-        min-width: 0;
-        margin-bottom: 10px;
-        padding: 8px 10px;
-    }
-     .time-value {
-        font-size: 2em;
-    }
-     .time-label {
-        font-size: 0.8em;
-        letter-spacing: 1px;
-    }
-     #countdown-message p {
-        font-size: 1.4em;
-     }
+    border-top: 1px solid #444;
+    padding-top: var(--padding);
+    font-size: 1rem;
+    color: #aaa;
+	text-align: center;
+	width: 100%;
+	box-sizing: border-box;
 }
