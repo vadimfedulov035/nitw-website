@@ -204,21 +204,21 @@ footer {
 }
 
 /* =================================== */
-/* --- Mobile Optimizations (Block Layout - Golden Middle) --- */
+/* --- Mobile Optimizations (Block Layout - Slightly Longer) --- */
 /* =================================== */
 @media (max-width: 750px) {
 
     /* --- Slightly Larger Base Font Size --- */
     html {
-        font-size: 15px; /* Increase base slightly */
+        font-size: 15.5px; /* Increase base size slightly more */
     }
 
-    /* --- Slightly Increased Spacing Variables --- */
+    /* --- Increased Spacing Variables --- */
     :root {
-        --padding: 1.4rem;          /* Slightly more major spacing */
-        --title-padding: 0.18rem;   /* Slightly more space below H1s */
-        --subtitle-padding: 0.35rem;/* Slightly more space below H3s */
-        --bar-padding: 0.35rem;     /* Slightly more space around progress text */
+        --padding: 1.55rem;         /* ~10% increase */
+        --title-padding: 0.2rem;   /* ~10% increase */
+        --subtitle-padding: 0.4rem;/* ~14% increase */
+        --bar-padding: 0.4rem;     /* ~14% increase */
     }
 
     /* --- Keep BLOCK LAYOUT for Body --- */
@@ -231,42 +231,42 @@ footer {
     .container {
         width: auto;
         max-width: 92%;
-        padding: 1.1rem;            /* Slightly more padding */
-        margin: 1.25rem auto;       /* Slightly more vertical margin */
+        padding: 1.2rem;            /* ~10% increase */
+        margin: 1.4rem auto;       /* ~10% increase vertical margin */
         flex-grow: 0;
     }
 
-    /* --- Slightly Larger Text Sizes & Line Height --- */
+    /* --- Larger Text Sizes & Line Height --- */
     header h1,
     main h1 {
-        font-size: 1.75rem;         /* Slightly larger titles */
-        line-height: 1.28;          /* Slightly looser line height */
+        font-size: 1.85rem;         /* ~8% increase */
+        line-height: 1.3;           /* Increase line height slightly */
         margin-bottom: 0;
     }
     header h1 + p.release-date,
     main h1 + p.release-date {
-        font-size: 0.88rem;         /* Slightly larger text */
+        font-size: 0.9rem;          /* ~2% increase (already quite readable) */
         margin-top: var(--title-padding);
         margin-bottom: 0;
     }
     .countdown-container h3,
     .progress-container h3 {
-        font-size: 1.3rem;          /* Slightly larger subtitle */
-        line-height: 1.28;          /* Slightly looser line height */
+        font-size: 1.35rem;         /* ~4% increase */
+        line-height: 1.3;           /* Increase line height slightly */
         margin-bottom: var(--subtitle-padding);
     }
     .progress-text {
-        font-size: 0.88rem;         /* Slightly larger text */
+        font-size: 0.9rem;          /* ~2% increase */
         margin-top: var(--bar-padding);
         margin-bottom: 0;
     }
     footer {
         padding-top: var(--padding);
         padding-bottom: var(--padding);
-        padding-left: 0.8rem;         /* Slightly more horizontal padding */
-        padding-right: 0.8rem;
-        font-size: 0.88rem;           /* Slightly larger text */
-        line-height: 1.38;            /* Slightly looser line height */
+        padding-left: 0.9rem;         /* ~12% increase horizontal padding */
+        padding-right: 0.9rem;
+        font-size: 0.9rem;            /* ~2% increase */
+        line-height: 1.4;             /* Increase line height slightly */
         border-top-width: 1px;
         margin-top: 0;
     }
@@ -281,32 +281,32 @@ footer {
     #countdown-timer {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.6rem;                /* Slightly larger gap */
+        gap: 0.7rem;                /* ~16% increase */
         justify-items: center;
     }
     .time-block {
-        padding: 0.35rem;           /* Slightly more padding */
+        padding: 0.4rem;            /* ~14% increase */
         min-width: auto;
     }
     .time-value {
-        font-size: 1.95rem;         /* Slightly larger numbers */
-        line-height: 1.12;
+        font-size: 2.05rem;         /* ~2.5% increase (already large) */
+        line-height: 1.15;          /* Slight increase */
     }
     .time-label {
-        font-size: 0.63rem;         /* Slightly larger labels */
+        font-size: 0.65rem;         /* ~3% increase */
     }
 
      /* --- Adjust Progress Bar - Slightly larger --- */
     .progress-bar-outer {
-        height: 1.2rem; /* Slightly thicker bar */
-        border-radius: 0.38rem;
+        height: 1.25rem; /* ~4% increase */
+        border-radius: 0.4rem; /* ~5% increase */
     }
     .progress-bar-inner {
-         box-shadow: 0 0 5px 1px rgba(225, 153, 0, 0.8); /* Keep adjusted glow */
-         border-radius: 0.38rem 0 0 0.38rem;
+         box-shadow: 0 0 6px 1px rgba(225, 153, 0, 0.8); /* Keep adjusted glow */
+         border-radius: 0.4rem 0 0 0.4rem; /* Match outer */
     }
     .progress-bar-inner[style*="100%"] {
-         border-radius: 0.38rem;
+         border-radius: 0.4rem;
     }
 
 }
