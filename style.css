@@ -203,107 +203,112 @@ footer {
 	box-sizing: border-box;
 }
 
-/* =================================== */
-/* --- Mobile Optimizations (Aggressive Fit) --- */
-/* =================================== */
-@media (max-width: 750px) { /* Increased breakpoint slightly */
+
+
+@media (max-width: 750px) {
 
     /* --- Minimal Base Font Size --- */
     html {
-        font-size: 12px; /* Minimum practical size */
+        font-size: 12px;
     }
 
     /* --- Minimal Spacing Variables --- */
     :root {
-        --padding: 0.75rem;          /* Minimal major spacing */
-        --title-padding: 0.1rem;    /* Minimal space below H1s */
-        --subtitle-padding: 0.15rem;/* Minimal space below H3s */
-        --bar-padding: 0.15rem;     /* Minimal space around progress text */
+        --padding: 0.75rem;
+        --title-padding: 0.1rem;
+        --subtitle-padding: 0.15rem;
+        --bar-padding: 0.15rem;
     }
 
-    /* --- Minimal Container Padding/Margin --- */
+    /* --- DISABLE FLEX LAYOUT FOR BODY ON MOBILE --- */
+    body {
+        display: block; /* Revert from flex to default block layout */
+        /* min-height: 100vh; */ /* Optional: Keep or remove. If removed, body only wraps content */
+        min-height: auto; /* Let body height be determined by content */
+    }
+
+
+    /* --- Adjust Container - REMOVE flex-grow and reset margin --- */
     .container {
         width: auto;
         max-width: 95%;
-        padding: 0.5rem;             /* Minimal container padding */
-        margin: 0.5rem auto 0 auto;  /* Minimal top margin */
-        /* flex-grow: 1; is inherited */
+        padding: 0.5rem;
+        margin: 0.5rem auto; /* Reset to standard block margin: top/bottom + horizontal auto */
+        flex-grow: 0; /* Disable flex growing */
+        /* position: relative; z-index: 1; text-align: center; are inherited */
     }
 
-    /* --- Minimal Text Sizes & Line Height --- */
+    /* --- Minimal Text Sizes & Line Height (Keep from previous) --- */
     header h1,
     main h1 {
-        font-size: 1.4rem;          /* Minimal title size */
-        line-height: 1.15;          /* Very tight line height */
-        margin-bottom: 0;           /* Ensure no bottom margin on H1 itself */
+        font-size: 1.4rem;
+        line-height: 1.15;
+        margin-bottom: 0;
     }
     header h1 + p.release-date,
     main h1 + p.release-date {
-        font-size: 0.75rem;         /* Minimal release date text */
-        margin-top: var(--title-padding); /* Apply tiny space */
+        font-size: 0.75rem;
+        margin-top: var(--title-padding);
     }
     .countdown-container h3,
     .progress-container h3 {
-        font-size: 1.1rem;          /* Minimal subtitle */
-        line-height: 1.15;          /* Tight line height */
-        margin-bottom: var(--subtitle-padding); /* Apply minimal space */
+        font-size: 1.1rem;
+        line-height: 1.15;
+        margin-bottom: var(--subtitle-padding);
     }
     .progress-text {
-        font-size: 0.7rem;          /* Minimal progress percentage text */
+        font-size: 0.7rem;
         margin-top: var(--bar-padding);
-        margin-bottom: 0; /* Remove bottom margin */
+        margin-bottom: 0;
     }
     footer {
-        padding-top: var(--padding);    /* Minimal top padding */
-        padding-bottom: var(--padding); /* Minimal bottom padding */
-        padding-left: 0.4rem;           /* Minimal horizontal padding */
-        padding-right: 0.4rem;          /* Minimal horizontal padding */
-        font-size: 0.75rem;             /* Minimal footer text */
-        line-height: 1.25;              /* Tight footer line height */
-        border-top-width: 0.5px;        /* Thinner border */
+        padding-top: var(--padding);
+        padding-bottom: var(--padding);
+        padding-left: 0.4rem;
+        padding-right: 0.4rem;
+        font-size: 0.75rem;
+        line-height: 1.25;
+        border-top-width: 0.5px;
+        /* width: 100%; box-sizing: border-box; text-align: center; are inherited */
+        /* Footer margin-top is now implicitly handled by block layout */
     }
 
-     /* Ensure no extra space after these blocks */
-     .countdown-container,
-     .progress-container {
-        margin-bottom: 0; /* Space before next element controlled by its margin-top */
-     }
-     /* Re-apply spacing using margin-top on subsequent blocks */
+    /* Spacing control for block layout */
      main h1 { margin-top: var(--padding); }
-     .countdown-container { margin-top: var(--padding); }
-     .progress-container { margin-top: var(--padding); }
+     .countdown-container { margin-top: var(--padding); margin-bottom: 0; } /* Keep this 0 */
+     .progress-container { margin-top: var(--padding); margin-bottom: var(--padding); } /* Add margin before footer */
 
 
-    /* --- Ultra-Compact Countdown Timer 2x2 Grid --- */
+    /* --- Ultra-Compact Countdown Timer 2x2 Grid (Keep from previous) --- */
     #countdown-timer {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.3rem;                /* Minimal gap */
+        gap: 0.3rem;
         justify-items: center;
     }
     .time-block {
-        padding: 0.15rem;           /* Minimal padding */
+        padding: 0.15rem;
         min-width: auto;
     }
     .time-value {
-        font-size: 1.5rem;          /* Minimal timer numbers */
+        font-size: 1.5rem;
         line-height: 1.05;
     }
     .time-label {
-        font-size: 0.55rem;         /* Minimal timer labels */
+        font-size: 0.55rem;
     }
 
-     /* --- Ultra-Compact Progress Bar --- */
+     /* --- Ultra-Compact Progress Bar (Keep from previous) --- */
     .progress-bar-outer {
-        height: 0.9rem; /* Very thin bar */
-        border-radius: 0.3rem; /* Reduce radius */
+        height: 0.9rem;
+        border-radius: 0.3rem;
     }
     .progress-bar-inner {
-         box-shadow: 0 0 4px 1px rgba(225, 153, 0, 0.8); /* Smaller glow */
-         border-radius: 0.3rem 0 0 0.3rem; /* Match outer */
+         box-shadow: 0 0 4px 1px rgba(225, 153, 0, 0.8);
+         border-radius: 0.3rem 0 0 0.3rem;
     }
     .progress-bar-inner[style*="100%"] {
-         border-radius: 0.3rem; /* Match outer */
+         border-radius: 0.3rem;
     }
 
 }
