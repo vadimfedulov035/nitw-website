@@ -203,108 +203,113 @@ footer {
 	box-sizing: border-box;
 }
 
-@media (max-width: 750px) { /* Or adjust breakpoint if needed, e.g., 600px */
+/* =================================== */
+/* --- Mobile Optimizations (Block Layout - Balanced Fit) --- */
+/* =================================== */
+@media (max-width: 750px) {
 
-    /* --- Restore Readable Base Font Size --- */
+    /* --- Set Base Font Size --- */
     html {
-        font-size: 15px; /* More comfortable mobile base */
-        /* Or try 14px / 16px */
+        font-size: 14px; /* Compromise base size */
     }
 
-    /* --- Restore Balanced Spacing Variables --- */
+    /* --- Define Balanced Spacing Variables --- */
     :root {
-        --padding: 1.75rem;          /* Restore reasonable major spacing */
-        --title-padding: 0.2rem;    /* Restore reasonable space below H1s */
-        --subtitle-padding: 0.5rem; /* Restore reasonable space below H3s */
-        --bar-padding: 0.4rem;      /* Restore reasonable space around progress text */
+        /* Slightly tighter than desktop, looser than aggressive */
+        --padding: 1.25rem;
+        --title-padding: 0.15rem;
+        --subtitle-padding: 0.3rem;
+        --bar-padding: 0.3rem;
     }
 
+    /* --- Ensure BLOCK LAYOUT for Body --- */
     body {
-        display: block;
-        flex-direction: column;   /* Ensure vertical stacking */
-        min-height: 100vh;        /* Ensure body tries to fill viewport height */
+        display: block;     /* Ensure block layout */
+        min-height: auto; /* Let body height wrap content */
+        /* flex-direction is irrelevant for display: block */
     }
 
-    /* --- Adjust Container - Restore flex-grow and balanced margin/padding --- */
+    /* --- Adjust Container for Block Layout --- */
     .container {
         width: auto;
-        max-width: 90%;           /* Good mobile width */
-        padding: 1.25rem;         /* Restore reasonable padding */
-        margin: 1.5rem auto 0 auto;/* Restore top margin, zero bottom for flex */
-        flex-grow: 1;             /* RE-ENABLE flex growing */
+        max-width: 92%;             /* Slightly wider */
+        padding: 1rem;              /* Reduced padding */
+        margin: 1rem auto;          /* Vertical margin + horizontal centering */
+        flex-grow: 0;               /* Ensure flex growing is off */
     }
 
-    /* --- Restore Readable Text Sizes & Line Height --- */
+    /* --- Adjust Text Sizes & Line Height (Balanced) --- */
     header h1,
     main h1 {
-        font-size: 1.8rem;          /* Larger titles */
-        line-height: 1.3;           /* Comfortable line height */
+        font-size: 1.7rem;          /* Reduced title size */
+        line-height: 1.25;          /* Reasonable line height */
         margin-bottom: 0;
     }
     header h1 + p.release-date,
     main h1 + p.release-date {
-        font-size: 0.9rem;          /* Larger release date text */
+        font-size: 0.85rem;         /* Reduced release date text */
         margin-top: var(--title-padding);
+        margin-bottom: 0; /* Keep 0 */
     }
     .countdown-container h3,
     .progress-container h3 {
-        font-size: 1.3rem;          /* Larger subtitle */
-        line-height: 1.3;
+        font-size: 1.25rem;         /* Reduced subtitle */
+        line-height: 1.25;
         margin-bottom: var(--subtitle-padding);
     }
     .progress-text {
-        font-size: 0.9rem;          /* Larger progress text */
+        font-size: 0.85rem;         /* Reduced progress percentage text */
         margin-top: var(--bar-padding);
-        margin-bottom: 0;
+        margin-bottom: 0; /* Keep 0 */
     }
     footer {
         padding-top: var(--padding);
         padding-bottom: var(--padding);
-        padding-left: 1rem;           /* Reasonable horizontal padding */
-        padding-right: 1rem;
-        font-size: 0.9rem;            /* Larger footer text */
-        line-height: 1.4;             /* Comfortable footer line height */
-        border-top-width: 1px;        /* Restore border thickness */
-        /* width, box-sizing, text-align inherited */
-        margin-top: 0; /* Let flexbox handle positioning */
+        padding-left: 0.75rem;         /* Reduced horizontal padding */
+        padding-right: 0.75rem;
+        font-size: 0.85rem;           /* Reduced footer text */
+        line-height: 1.35;            /* Reasonable footer line height */
+        border-top-width: 1px;        /* Standard border */
+        margin-top: 0; /* Let previous element's margin handle space */
     }
 
-    /* Ensure spacing uses margin-top for flex layout */
+    /* --- Block Layout Spacing --- */
      main h1 { margin-top: var(--padding); }
      .countdown-container { margin-top: var(--padding); margin-bottom: 0; }
-     .progress-container { margin-top: var(--padding); margin-bottom: 0; } /* Footer pushed by flex */
+     /* Add margin AFTER progress container, BEFORE footer */
+     .progress-container { margin-top: var(--padding); margin-bottom: var(--padding); }
 
-    /* --- Restore Comfortable Countdown Timer --- */
+
+    /* --- Adjust Countdown Timer (Balanced) --- */
     #countdown-timer {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.75rem;               /* Increased gap */
+        gap: 0.5rem;                /* Reduced gap */
         justify-items: center;
     }
     .time-block {
-        padding: 0.4rem;            /* Increased padding */
+        padding: 0.3rem;            /* Reduced padding */
         min-width: auto;
     }
     .time-value {
-        font-size: 2.0rem;          /* Larger timer numbers */
-        line-height: 1.15;
+        font-size: 1.9rem;          /* Reduced timer numbers */
+        line-height: 1.1;
     }
     .time-label {
-        font-size: 0.65rem;         /* Larger timer labels */
+        font-size: 0.6rem;          /* Reduced timer labels */
     }
 
-    /* --- Restore Standard Progress Bar --- */
+     /* --- Adjust Progress Bar (Balanced) --- */
     .progress-bar-outer {
-        height: 1.25rem; /* Restore reasonable height */
-        border-radius: 0.4rem;
+        height: 1.15rem; /* Slightly thinner bar */
+        border-radius: 0.35rem;
     }
     .progress-bar-inner {
-         /* Restore original glow/radius or adjust */
-         box-shadow: 0 0 6px 1px rgba(225, 153, 0, 0.8);
-         border-radius: 0.4rem 0 0 0.4rem;
+         box-shadow: 0 0 5px 1px rgba(225, 153, 0, 0.8); /* Adjusted glow */
+         border-radius: 0.35rem 0 0 0.35rem;
     }
     .progress-bar-inner[style*="100%"] {
-         border-radius: 0.4rem;
+         border-radius: 0.35rem;
     }
 
 }
