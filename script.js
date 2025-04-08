@@ -1,6 +1,6 @@
 // Set the date we're counting down to
 // Month is 0-indexed, so February is 1
-const countDownDate = new Date("2037-02-21T00:00:00").getTime();
+const countDownDate = new Date("2033-02-21T00:00:00").getTime();
 
 // Get elements to display the time
 const daysEl = document.getElementById("days");
